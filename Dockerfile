@@ -7,3 +7,6 @@ RUN carton install
 
 COPY . .
 CMD ["carton", "exec", "plackup", "/app/bin/app.psgi"]
+
+ARG BUILD_DATE
+ARG VCS_REF
