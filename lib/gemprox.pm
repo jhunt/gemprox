@@ -6,7 +6,6 @@ our $VERSION = '0.1';
 use Net::Gemini;
 use Text::Gemini;
 
-set layout   => 'main';
 set template => 'simple';
 
 sub to_html {
@@ -37,7 +36,14 @@ sub to_html {
 }
 
 get '/' => sub {
-	template 'index';
+	template 'proxy', {
+		path  => '',
+		html  => to_html('gemini://jameshunt.us/gemprox/welcome.gmi'),
+		title => 'gemprox | gemini.zyxl.xyz',
+
+		ogtitle       => 'gemprox - An HTTP -&gt; Gemini proxy',
+		ogdescription => 'Browse the Gemini world, from the comfort of your own HTTP browser.',
+	};
 };
 
 get '/gemini/**' => sub {
@@ -45,7 +51,12 @@ get '/gemini/**' => sub {
 	my $gemini = sprintf('gemini://%s', join('/', @$splat));
 	print STDERR ">> looking up [$gemini]\n";
 	template 'proxy', {
-		html => to_html($gemini),
+		path  => join('/', @$splat),
+		html  => to_html($gemini),
+		title => $gemini.' | gemprox | gemini.zyxl.xyz',
+
+		ogtitle       => $gemini,
+		ogdescription => "The $gemini site, but this time in HTTP!",
 	};
 };
 

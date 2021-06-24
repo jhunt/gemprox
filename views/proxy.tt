@@ -1,1 +1,34 @@
-<% html %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+  <meta property="og:title" content="<% ogtitle %>">
+  <meta property="og:description" content="<% ogdescription %>">
+  <meta property="og:image" content="/og.gemini.png">
+  <title><% title %></title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <span>gemini://</span>
+    <input type="text" name="url" placeholder="jameshunt.us/log/" value="<% path %>">
+    <nav>
+      <li><a href="/gemini/jameshunt.us/gemprox/">about</a></li>
+    </nav>
+  </header>
+  <div id="main">
+    <% html %>
+  </div>
+  <footer>
+    Copyright &copy; 2021 Hunt Productions, Inc.
+  </footer>
+  <script type="text/javascript">
+    (() => {
+      const q = document.querySelector('input[name="url"]')
+      q.addEventListener('change', (event) => document.location.pathname = "/gemini/"+event.target.value)
+    })()
+  </script>
+</body>
+</html>
