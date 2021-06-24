@@ -1,6 +1,6 @@
 # gemprox
 
-An HTTP front door to the world of Gemini.
+An http:// gateway to gemini://
 
 🚀 <https://gemini.xyzl.xyz/gemini/jameshunt.us>
 
