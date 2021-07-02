@@ -22,7 +22,7 @@
     <% html %>
   </div>
   <footer>
-    Copyright &copy; 2021 Hunt Productions, Inc.
+    Powered by Hunt Productions, Inc.
   </footer>
   <script type="text/javascript">
     (() => {
