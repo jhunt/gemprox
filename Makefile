@@ -9,3 +9,6 @@ build:
 
 push: build
 	docker push $(IMAGE):$(TAG)
+
+run:
+	carton exec plackup -p 6001 ./bin/app.psgi
